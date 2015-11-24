@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <ListPreference
+            android:key="pref_syncConnectionType"
+            android:title="Movie Ordering"
+            android:dialogTitle="Select how you'd like your movies to be ordered:"
+            android:entries="@array/pref_movieOrdering_entries"
+            android:entryValues="@array/pref_movieOrdering_values"
+            android:defaultValue="@string/popular_sort"
+            android:persistent="true"/>
+</PreferenceScreen>

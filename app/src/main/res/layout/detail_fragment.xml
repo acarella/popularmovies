@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/poster_detail_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight=".3"
+            android:layout_height="wrap_content"
+            android:text="Rating"/>
+        <RatingBar
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:id="@+id/ratingBar"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".25"
+                android:text="Original Title:"/>
+            <TextView
+                android:id="@+id/original_title_tv"
+                android:layout_width="0dp"
+                android:layout_weight=".75"
+                android:layout_height="wrap_content"
+                android:text="THIS WILL BE THE ORIGINAL TITLE"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:text="Plot synopsis: "/>
+        <TextView
+            android:id="@+id/synopsis_tv"
+            android:layout_width="0dp"
+            android:layout_weight=".75"
+            android:layout_height="wrap_content"
+            android:text="Plot synopsis text goes here"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:text="Release Date:"/>
+        <TextView
+            android:id="@+id/release_date_tv"
+            android:layout_width="0dp"
+            android:layout_weight=".75"
+            android:layout_height="wrap_content"
+            android:text="RELEASE DATE GOES HERE"/>
+    </LinearLayout>
+</LinearLayout>
