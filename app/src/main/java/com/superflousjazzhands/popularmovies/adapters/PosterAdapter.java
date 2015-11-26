@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import com.squareup.picasso.Picasso;
 import com.superflousjazzhands.popularmovies.R;
 import com.superflousjazzhands.popularmovies.model.Movie;
+import com.superflousjazzhands.popularmovies.views.SquaredImageView;
 
 import java.util.List;
 

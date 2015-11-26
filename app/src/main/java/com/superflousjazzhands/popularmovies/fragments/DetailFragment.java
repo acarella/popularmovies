@@ -20,20 +20,20 @@ public class DetailFragment extends Fragment {
 
     private final String BASE_URL = "http://image.tmdb.org/t/p/w185//";
 
-    private Movie movie;
+    private Movie mMovie;
 
-    ImageView posterImage;
-    TextView titleTextView;
-    TextView synopsisTextView;
-    TextView dateTextView;
-    RatingBar ratingBar;
+    ImageView mPosterImage;
+    TextView mTitleTextView;
+    TextView mSynopsisTextView;
+    TextView mDateTextView;
+    RatingBar mRatingBar;
 
     public DetailFragment(){};
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        movie = (Movie) getArguments().getSerializable("movie");
+        mMovie = (Movie) getArguments().getSerializable("movie");
     }
 
     @Override
@@ -41,24 +41,25 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = layoutInflater.inflate(R.layout.detail_fragment, viewGroup, false);
 
-        posterImage = (ImageView) view.findViewById(R.id.poster_detail_iv);
-        titleTextView = (TextView) view.findViewById(R.id.original_title_tv);
-        synopsisTextView = (TextView) view.findViewById(R.id.synopsis_tv);
-        dateTextView = (TextView) view.findViewById(R.id.release_date_tv);
-        ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
+        mPosterImage = (ImageView) view.findViewById(R.id.poster_detail_iv);
+        mTitleTextView = (TextView) view.findViewById(R.id.original_title_tv);
+        mSynopsisTextView = (TextView) view.findViewById(R.id.synopsis_tv);
+        mDateTextView = (TextView) view.findViewById(R.id.release_date_tv);
+        mRatingBar = (RatingBar) view.findViewById(R.id.ratingBar);
 
-        String urlString = BASE_URL + movie.getPosterUrl();
+        String urlString = BASE_URL + mMovie.getPosterUrl();
 
         Picasso.with(getActivity())
                 .load(urlString)
                 .placeholder(R.mipmap.ic_launcher)
-                .into(posterImage);
-        titleTextView.setText(movie.getTitle());
-        synopsisTextView.setText(movie.getSynopsis());
-        dateTextView.setText(movie.getReleaseDate());
-        ratingBar.setRating(movie.getUserRating().floatValue());
+                .into(mPosterImage);
+        mTitleTextView.setText(mMovie.getTitle());
+        mSynopsisTextView.setText(mMovie.getSynopsis());
+        mDateTextView.setText(mMovie.getReleaseDate());
+        mRatingBar.setRating(mMovie.getUserRating().floatValue());
 
-        titleTextView.setText(movie.getTitle());
+
+        mTitleTextView.setText(mMovie.getTitle());
         return view;
     }
 

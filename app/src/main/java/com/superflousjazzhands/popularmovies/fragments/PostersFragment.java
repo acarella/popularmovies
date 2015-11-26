@@ -40,11 +40,14 @@ import java.util.List;
  */
 public class PostersFragment extends Fragment {
     private final String TAG = PostersFragment.class.getSimpleName();
-    private List<Movie> movies;
-    private GridView gridView;
+    private List<Movie> mMovies;
+    private GridView mGridView;
 
-    private static final String BASE_URL = "http://api.themoviedb.org/3/discover/movie?" +
-            "api_key=d9aa100f9b165bfaeb0b788f50c6b0b2";
+    // add your api key here
+    private final String API_KEY = getResources().getString(R.string.movies_api_key);
+    private final String BASE_URL = "http://api.themoviedb.org/3/discover/movie?" +
+            "api_key=" + API_KEY ;
+
     public static String urlString;
 
     public PostersFragment() {
@@ -60,11 +63,11 @@ public class PostersFragment extends Fragment {
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup,
                              Bundle savedInstanceState) {
         View view = layoutInflater.inflate(R.layout.posters_fragement, viewGroup, false);
-        gridView = (GridView) view.findViewById(R.id.posters_gv);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mGridView = (GridView) view.findViewById(R.id.posters_gv);
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Movie movie = movies.get(position);
+                Movie movie = mMovies.get(position);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("movie", movie);
                 DetailFragment detailFragment = new DetailFragment();
@@ -72,7 +75,7 @@ public class PostersFragment extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, detailFragment);
-                fragmentTransaction.addToBackStack(null).commit();
+                fragmentTransaction.addToBackStack("detail_view").commit();
             }
         });
         return view;
@@ -111,9 +114,9 @@ public class PostersFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             try {
-                movies = Arrays.asList(parseMoviesFromJsonString(result));
-                PosterAdapter adapter = new PosterAdapter(getActivity(), movies);
-                gridView.setAdapter(adapter);
+                mMovies = Arrays.asList(parseMoviesFromJsonString(result));
+                PosterAdapter adapter = new PosterAdapter(getActivity(), mMovies);
+                mGridView.setAdapter(adapter);
             } catch (org.json.JSONException e){
                 Log.e(TAG, e.toString());
             }

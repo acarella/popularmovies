@@ -1,4 +1,4 @@
-package com.superflousjazzhands.popularmovies.adapters;
+package com.superflousjazzhands.popularmovies.views;
 
 /**
  * Created by antoniocarella on 11/17/15.
@@ -11,7 +11,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-final class SquaredImageView extends ImageView {
+final public class SquaredImageView extends ImageView {
     public SquaredImageView(Context context) {
         super(context);
     }

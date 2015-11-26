@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.superflousjazzhands.popularmovies.fragments.PostersFragment;
+import com.superflousjazzhands.popularmovies.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
             PostersFragment postersFragment = new PostersFragment();
 
             getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, postersFragment, null).commit();
+                    .add(R.id.fragment_container, postersFragment, null)
+                    .addToBackStack(null)
+                    .commit();
 
         }
     }
@@ -77,5 +80,14 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         //This method is called when the up button is pressed. Just the pop back stack.
         getFragmentManager().popBackStack();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

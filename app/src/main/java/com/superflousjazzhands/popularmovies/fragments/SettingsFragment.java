@@ -1,9 +1,11 @@
-package com.superflousjazzhands.popularmovies;
+package com.superflousjazzhands.popularmovies.fragments;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+
+import com.superflousjazzhands.popularmovies.R;
 
 
 /**
