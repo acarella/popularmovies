@@ -43,16 +43,9 @@ public class PostersFragment extends Fragment {
     private List<Movie> mMovies;
     private GridView mGridView;
 
-    // add your api key here
-    private final String API_KEY = getResources().getString(R.string.movies_api_key);
-    private final String BASE_URL = "http://api.themoviedb.org/3/discover/movie?" +
-            "api_key=" + API_KEY ;
+    public static String mUrlString;
 
-    public static String urlString;
-
-    public PostersFragment() {
-
-    }
+    public PostersFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,10 +79,15 @@ public class PostersFragment extends Fragment {
         super.onStart();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
+        // add your api key below
+
+       final String BASE_URL = "http://api.themoviedb.org/3/discover/movie?" +
+                "api_key=" + getResources().getString(R.string.movies_api_key); ;
+
         if (sharedPreferences.getString(getResources().getString(R.string.pref_syncConnectionType), "").equals("1")) {
-            urlString = BASE_URL + "&sort_by=popularity.desc";
+            mUrlString = BASE_URL + "&sort_by=popularity.desc";
         } else {
-            urlString = BASE_URL + "&sort_by=vote_count.desc";
+            mUrlString = BASE_URL + "&sort_by=vote_count.desc";
         }
         FetchPosterPathsTask fetchDataTask = new FetchPosterPathsTask();
         fetchDataTask.execute();
@@ -102,7 +100,7 @@ public class PostersFragment extends Fragment {
         protected String doInBackground(URL... params) {
             String jsonString = "";
             try {
-                jsonString = downloadUrl(urlString);
+                jsonString = downloadUrl(mUrlString);
             } catch (IOException e) {
                 Log.e(TAG, e.toString());
             }
@@ -181,6 +179,9 @@ public class PostersFragment extends Fragment {
             final String SYNOPSIS_KEY = "overview";
             final String USERRATING_KEY = "vote_average";
             final String RELEASEDATE_KEY = "release_date";
+
+
+            if (jsonString.equals(null)){return new Movie[0];}
 
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONArray topMoviesArray = jsonObject.getJSONArray(RESUlTS_LIST);

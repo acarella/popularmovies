@@ -32,7 +32,7 @@ public class PosterAdapter extends ArrayAdapter<Movie> {
 
         Picasso.with(getContext())
                 .load(url)
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.drawable.ic_cloud_black_36dp)
                 .into(view);
 
         return view;
