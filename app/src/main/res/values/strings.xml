@@ -6,4 +6,6 @@
     <string name="release_date">Release Date:</string>
     <string name="plot_synopsis">Plot Synopsis:</string>
     <string name="original_title">Title:</string>
+    <string name="favorite_button_text">MARK AS FAVORITE</string>
+    <string name="trailer_name_placeholder">Trailer Name</string>
 </resources>

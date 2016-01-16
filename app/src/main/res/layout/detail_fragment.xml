@@ -6,92 +6,94 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:padding="0dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/poster_detail_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/original_title_tv"
+            android:textSize="40dp"
+            android:gravity="center|left"
+            android:text="TESTING"
+            android:elevation="5dp"
+            android:paddingLeft="15dp"
+            android:background="@color/colorAccent"/>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="8dp">
-
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_weight=".5"
+                android:id="@+id/poster_detail_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:numStars="10"
-                android:stepSize="0.1" />
+                android:layout_gravity="center"
+                android:layout_alignTop="@+id/info_LL"
+                android:layout_alignBottom="@+id/info_LL"
+                android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_weight=".5"
+            android:id="@+id/info_LL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_toRightOf="@+id/poster_detail_iv"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/release_date_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="left"
+                android:textSize="18dp"
+                android:text="release year" />
+            <TextView
+                android:id="@+id/runtime_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="left"
+                android:text="runtime" />
+            <TextView
+                android:id="@+id/rating_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="rating" />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite_button_text"
+                android:layout_gravity="left"/>
+        </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:layout_gravity="left"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:text="@string/original_title" />
-
-            <TextView
-                android:id="@+id/original_title_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".7" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:layout_gravity="left"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:text="@string/plot_synopsis" />
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
 
             <TextView
                 android:id="@+id/synopsis_tv"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:layout_gravity="left"
+                android:text="synopsis"/>
+            <View
+                android:id="@+id/trailer_insert"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:text="@string/release_date" />
-
-            <TextView
-                android:id="@+id/release_date_tv"
+                android:layout_height="0dp"/>
+            <LinearLayout
+                android:id="@+id/reviews_insert_LL"
+                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".7" />
+                android:layout_height="0dp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

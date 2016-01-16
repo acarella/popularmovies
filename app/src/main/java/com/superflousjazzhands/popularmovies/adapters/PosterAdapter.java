@@ -21,7 +21,6 @@ public class PosterAdapter extends ArrayAdapter<Movie> {
     private final String BASE_URL = "http://image.tmdb.org/t/p/w185//";
     private LayoutInflater layoutInflater;
 
-
     public PosterAdapter(Activity context, List<Movie> posterPaths){
         super(context, 0, posterPaths);
         layoutInflater = LayoutInflater.from(context);

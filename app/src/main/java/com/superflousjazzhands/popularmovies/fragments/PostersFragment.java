@@ -81,14 +81,15 @@ public class PostersFragment extends Fragment {
 
         // add your api key below
 
-       final String BASE_URL = "http://api.themoviedb.org/3/discover/movie?" +
-                "api_key=" + getResources().getString(R.string.movies_api_key); ;
+       final String BASE_URL = "https://api.themoviedb.org/3/discover/movie?" +
+                "api_key=" + getResources().getString(R.string.movies_api_key);
 
         if (sharedPreferences.getString(getResources().getString(R.string.pref_syncConnectionType), "").equals("1")) {
             mUrlString = BASE_URL + "&sort_by=popularity.desc";
         } else {
             mUrlString = BASE_URL + "&sort_by=vote_count.desc";
         }
+
         FetchPosterPathsTask fetchDataTask = new FetchPosterPathsTask();
         fetchDataTask.execute();
     }
@@ -179,7 +180,7 @@ public class PostersFragment extends Fragment {
             final String SYNOPSIS_KEY = "overview";
             final String USERRATING_KEY = "vote_average";
             final String RELEASEDATE_KEY = "release_date";
-
+            final String SERVER_ID_KEY = "id";
 
             if (jsonString.equals(null)){return new Movie[0];}
 
@@ -194,8 +195,10 @@ public class PostersFragment extends Fragment {
                 String synopsis = movieObject.getString(SYNOPSIS_KEY);
                 Double userRating = movieObject.getDouble(USERRATING_KEY);
                 String releaseDate = movieObject.getString(RELEASEDATE_KEY);
+                String serverId = movieObject.getString(SERVER_ID_KEY);
 
-                Movie movie = new Movie(title, posterUrl, synopsis, userRating, releaseDate);
+                Movie movie = new Movie(title, posterUrl, synopsis, userRating, releaseDate,
+                        serverId);
                 movies[i] = movie;
             }
             return movies;
