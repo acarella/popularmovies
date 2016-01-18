@@ -28,6 +28,6 @@ public class TrailerColumns {
 
     @DataType(DataType.Type.INTEGER)
     @References(table = MovieDatabase.MOVIES, column = TrailerColumns._ID)
-    public static final String TRAILER_ID = "trailer_id";
+    public static final String MOVIE_ID = "movie_id";
 
 }

@@ -39,6 +39,11 @@ import java.util.List;
  * Created by antoniocarella on 11/17/15.
  */
 public class PostersFragment extends Fragment {
+
+    public static interface Delegate {
+        public void onItemTapped(PostersFragment postersFragment, Movie movie);
+    }
+
     private final String TAG = PostersFragment.class.getSimpleName();
     private List<Movie> mMovies;
     private GridView mGridView;
@@ -71,6 +76,9 @@ public class PostersFragment extends Fragment {
                 fragmentTransaction.addToBackStack("detail_view").commit();
             }
         });
+
+
+
         return view;
     }
 

@@ -7,19 +7,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.superflousjazzhands.popularmovies.fragments.DetailFragment;
 import com.superflousjazzhands.popularmovies.fragments.PostersFragment;
 import com.superflousjazzhands.popularmovies.fragments.SettingsFragment;
+import com.superflousjazzhands.popularmovies.model.Movie;
 
-public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener,
+    PostersFragment.Delegate {
+
+    Boolean isDualPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        View detailView = findViewById(R.id.rating_tv);
+        isDualPane = detailView != null &&
+                detailView.getVisibility() == View.VISIBLE;
+
         getFragmentManager().addOnBackStackChangedListener(this);
         shouldDisplayHomeUp();
+
+        //TODO: call SyncService here, do the following in its call back:
+
+
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -27,10 +41,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 return;
             }
 
-            PostersFragment postersFragment = new PostersFragment();
-
             getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, postersFragment, null)
+                    .add(R.id.fragment_container, new PostersFragment(), null)
                     .addToBackStack(null)
                     .commit();
 
@@ -88,6 +100,24 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    /*
+    * PostersFragement.java delegate
+    * */
+
+    @Override
+    public void onItemTapped(PostersFragment postersFragment, Movie movie){
+
+        if (isDualPane){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.detail_container, new DetailFragment())
+                    .commit();
+        } else {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new DetailFragment())
+                    .commit();
         }
     }
 }

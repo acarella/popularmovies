@@ -19,6 +19,9 @@ public class MovieColumns {
     public static final String _ID = "_id";
 
     @DataType(DataType.Type.TEXT)
+    public static final String TITLE = "title";
+
+    @DataType(DataType.Type.TEXT)
     public static final String POSTER_URL = "poster_url";
 
     @DataType(DataType.Type.TEXT)
